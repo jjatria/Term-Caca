@@ -49,8 +49,12 @@ use Exporter::Shiny qw/
     caca_get_event_resize_height
     caca_get_event_resize_width
     caca_get_event_type
+    caca_get_font_list
+    caca_get_font_height
+    caca_get_font_width
     caca_get_mouse_x
     caca_get_mouse_y
+    caca_load_font
     caca_put_char
     caca_put_str
     caca_refresh_display
@@ -114,6 +118,11 @@ $ffi->attach( caca_get_event_resize_width => [ 'opaque' ] => 'int' );
 $ffi->attach( caca_get_event_resize_height => [ 'opaque' ] => 'int' );
 
 $ffi->attach( caca_get_event_mouse_button => [ 'opaque' ] => 'int' );
+
+$ffi->attach( caca_load_font => [ 'string', 'int' ] => 'opaque' );
+$ffi->attach( caca_get_font_width => [ 'opaque' ] => 'int' );
+$ffi->attach( caca_get_font_height => [ 'opaque' ] => 'int' );
+$ffi->attach( caca_get_font_list => [] => 'string_array' );
 
 our $pointer_size = $ffi->sizeof( 'void *' );
 
